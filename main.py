@@ -10,7 +10,7 @@ from pytube import YouTube
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'  # Change this path
 
 def take_screenshot():
-    # Simulate Win + Shift + S keypress
+    # Simulate the windows shortcut of Win + Shift + S keypress
     keyboard.press('win+shift+s')
 
     # Wait for a moment to allow the screenshot region selection
