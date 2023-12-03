@@ -2,7 +2,6 @@ import tkinter as tk
 from PIL import Image, ImageTk, ImageGrab
 import keyboard
 import time
-from io import BytesIO
 import pytesseract
 from pytube import YouTube
 
@@ -10,6 +9,11 @@ from pytube import YouTube
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'  # Change this path
 
 def take_screenshot():
+    # Clear the clipboard image if it exists
+    clipboard_image = ImageGrab.grabclipboard()
+    if clipboard_image:
+        clipboard_image.close()
+
     # Simulate the windows shortcut of Win + Shift + S keypress
     keyboard.press('win+shift+s')
 
@@ -22,11 +26,15 @@ def take_screenshot():
     # Wait for another moment to allow the screenshot to be taken
     time.sleep(1)
 
+    # Clear the clipboard image if it exists
+    clipboard_image = ImageGrab.grabclipboard()
+    if clipboard_image:
+        clipboard_image.close()
+
     # Get the screenshot image
     screenshot = ImageGrab.grabclipboard()
 
     if screenshot:
-
         # Extract text using OCR
         text = pytesseract.image_to_string(screenshot)
 
