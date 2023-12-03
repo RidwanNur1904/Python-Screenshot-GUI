@@ -26,8 +26,6 @@ def take_screenshot():
     screenshot = ImageGrab.grabclipboard()
 
     if screenshot:
-        # Resize the screenshot to a maximum of 500x500 pixels
-        screenshot = screenshot.resize((min(screenshot.width, 500), min(screenshot.height, 500)))
 
         # Extract text using OCR
         text = pytesseract.image_to_string(screenshot)
